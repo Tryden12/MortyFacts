@@ -30,7 +30,8 @@ class MainActivity : AppCompatActivity() {
             .build()
         val rickAppCompatActivity: RickyAndMortyService = retrofit.create(RickyAndMortyService::class.java)
 
-        rickAppCompatActivity.getCharacterById().enqueue(object : Callback<GetCharacterByIdResponse> {
+        // TODO: characterId
+        rickAppCompatActivity.getCharacterById(10).enqueue(object : Callback<GetCharacterByIdResponse> {
             override fun onResponse(call: Call<GetCharacterByIdResponse>, response: Response<GetCharacterByIdResponse>) {
                 Log.e(TAG, response.toString() )
 
