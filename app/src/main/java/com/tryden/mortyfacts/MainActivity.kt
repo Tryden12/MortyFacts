@@ -3,6 +3,8 @@ package com.tryden.mortyfacts
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.TextView
+import android.widget.Toast
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import com.tryden.mortyfacts.Constants.BASE_URL
@@ -19,6 +21,8 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        val textView = findViewById<TextView>(R.id.textView)
+
         val moshi = Moshi.Builder().addLast(KotlinJsonAdapterFactory()).build()
         val retrofit: Retrofit = Retrofit.Builder()
             .baseUrl(BASE_URL)
@@ -26,12 +30,21 @@ class MainActivity : AppCompatActivity() {
             .build()
         val rickAppCompatActivity: RickyAndMortyService = retrofit.create(RickyAndMortyService::class.java)
 
-        rickAppCompatActivity.getCharacterById().enqueue(object : Callback<Any> {
-            override fun onResponse(call: Call<Any>, response: Response<Any>) {
+        rickAppCompatActivity.getCharacterById().enqueue(object : Callback<GetCharacterByIdResponse> {
+            override fun onResponse(call: Call<GetCharacterByIdResponse>, response: Response<GetCharacterByIdResponse>) {
                 Log.e(TAG, response.toString() )
+
+                if (!response.isSuccessful) {
+                    Toast.makeText(this@MainActivity, "Unsuccessful network call!", Toast.LENGTH_SHORT).show()
+                    return
+                }
+
+                val body = response.body()!!
+                val name = body.name
+                textView.text = name
             }
 
-            override fun onFailure(call: Call<Any>, t: Throwable) {
+            override fun onFailure(call: Call<GetCharacterByIdResponse>, t: Throwable) {
                 Log.e(TAG, t.message ?: "Null message" )
             }
         })
