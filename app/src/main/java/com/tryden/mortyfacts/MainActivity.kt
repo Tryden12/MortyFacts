@@ -38,7 +38,7 @@ class MainActivity : AppCompatActivity() {
         val speciesTextView = findViewById<TextView>(R.id.speciesTextView)
         val genderImageView = findViewById<ImageView>(R.id.genderImageView)
 
-        viewModel.refreshCharacter(54)
+        viewModel.refreshCharacter(1)
         viewModel.characterByIdLiveData.observe(this) { response ->
             if (response == null) {
                 Toast.makeText(
