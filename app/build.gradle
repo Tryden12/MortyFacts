@@ -11,7 +11,7 @@ kapt {
 
 android {
     namespace 'com.tryden.mortyfacts'
-    compileSdk 32
+    compileSdk 33
 
     defaultConfig {
         applicationId "com.tryden.mortyfacts"
@@ -59,8 +59,8 @@ dependencies {
     // Epoxy
     def epoxyVersion = "5.1.1"
     implementation "com.airbnb.android:epoxy:$epoxyVersion"
-    implementation "com.airbnb.android:epoxy-paging:$epoxyVersion"
-    implementation "com.airbnb.android:epoxy-paging3:$epoxyVersion"
+//    implementation "com.airbnb.android:epoxy-paging:$epoxyVersion"
+//    implementation "com.airbnb.android:epoxy-paging3:$epoxyVersion"
     kapt("com.airbnb.android:epoxy-processor:$epoxyVersion")
 
 
