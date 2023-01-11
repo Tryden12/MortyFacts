@@ -1,5 +1,6 @@
-package com.tryden.mortyfacts
+package com.tryden.mortyfacts.network
 
+import com.tryden.mortyfacts.network.response.GetCharacterByIdResponse
 import retrofit2.Response
 
 class ApiClient(

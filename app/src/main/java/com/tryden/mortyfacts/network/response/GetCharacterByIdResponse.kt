@@ -1,4 +1,4 @@
-package com.tryden.mortyfacts
+package com.tryden.mortyfacts.network.response
 
 data class GetCharacterByIdResponse(
     val created: String = "",

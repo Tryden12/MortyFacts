@@ -1,4 +1,4 @@
-package com.tryden.mortyfacts
+package com.tryden.mortyfacts.network
 
 import retrofit2.Response
 import java.lang.Exception
