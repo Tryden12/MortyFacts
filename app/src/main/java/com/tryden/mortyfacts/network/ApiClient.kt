@@ -1,6 +1,7 @@
 package com.tryden.mortyfacts.network
 
 import com.tryden.mortyfacts.network.response.GetCharacterByIdResponse
+import com.tryden.mortyfacts.network.response.GetCharactersPageResponse
 import retrofit2.Response
 
 class ApiClient(
@@ -8,6 +9,10 @@ class ApiClient(
 ) {
     suspend fun getCharacterById(characterId: Int): SimpleResponse<GetCharacterByIdResponse> {
         return safeApiCall { rickyAndMortyService.getCharacterById(characterId) }
+    }
+
+    suspend fun getCharactersPage(pageIndex: Int) : SimpleResponse<GetCharactersPageResponse> {
+        return safeApiCall { rickyAndMortyService.getCharactersPage(pageIndex) }
     }
 
     private inline fun <T> safeApiCall(apiCall: () -> Response<T>): SimpleResponse<T> {

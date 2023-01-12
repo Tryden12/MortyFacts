@@ -1,9 +1,11 @@
 package com.tryden.mortyfacts.network
 
 import com.tryden.mortyfacts.network.response.GetCharacterByIdResponse
+import com.tryden.mortyfacts.network.response.GetCharactersPageResponse
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Path
+import retrofit2.http.Query
 
 interface RickyAndMortyService {
 
@@ -11,4 +13,9 @@ interface RickyAndMortyService {
     suspend fun getCharacterById(
         @Path("character-id") characterId: Int
     ) : Response<GetCharacterByIdResponse>
+
+    @GET("character")
+    suspend fun getCharactersPage(
+        @Query("page") pageIndex: Int
+    ) : Response<GetCharactersPageResponse>
 }
