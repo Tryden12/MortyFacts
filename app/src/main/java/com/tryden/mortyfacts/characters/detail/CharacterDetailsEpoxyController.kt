@@ -7,8 +7,7 @@ import com.tryden.mortyfacts.databinding.ModelCharacterDetailsDataPointBinding
 import com.tryden.mortyfacts.databinding.ModelCharacterDetailsHeaderBinding
 import com.tryden.mortyfacts.databinding.ModelCharacterDetailsImageBinding
 import com.tryden.mortyfacts.epoxy.ViewBindingKotlinModel
-import com.tryden.mortyfacts.network.response.GetCharacterByIdResponse
-
+import  com.tryden.mortyfacts.domain.models.Character
 class CharacterDetailsEpoxyController: EpoxyController() {
 
     var isLoading: Boolean = true
@@ -19,7 +18,7 @@ class CharacterDetailsEpoxyController: EpoxyController() {
             }
         }
 
-    var characterResponse: GetCharacterByIdResponse? = null
+    var character: Character? = null
         set(value) {
             field = value
             if (field != null) {
@@ -34,32 +33,32 @@ class CharacterDetailsEpoxyController: EpoxyController() {
             return
         }
 
-        if (characterResponse == null) {
+        if (character == null) {
             // todo error state
             return
         }
 
         // Header Model
         HeaderEpoxyModel(
-            name = characterResponse!!.name,
-            gender = characterResponse!!.gender,
-            status = characterResponse!!.status
+            name = character!!.name,
+            gender = character!!.gender,
+            status = character!!.status
         ).id("header").addTo(this)
 
         // Image Model
         ImageEpoxyModel(
-            imageUrl = characterResponse!!.image
+            imageUrl = character!!.image
         ).id("image").addTo(this)
 
         // Data Point Models
         DataPointEpoxyModel(
             title = "Origin",
-            description = characterResponse!!.origin.name
+            description = character!!.origin.name
         ).id("origin").addTo(this)
 
         DataPointEpoxyModel(
             title = "Species",
-            description = characterResponse!!.species
+            description = character!!.species
         ).id("species").addTo(this)
     }
 

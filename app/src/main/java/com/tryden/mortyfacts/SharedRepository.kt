@@ -1,10 +1,11 @@
 package com.tryden.mortyfacts
 
+import com.tryden.mortyfacts.domain.mappers.CharacterMapper
 import com.tryden.mortyfacts.network.NetworkLayer
-import com.tryden.mortyfacts.network.response.GetCharacterByIdResponse
+import com.tryden.mortyfacts.domain.models.Character
 
 class SharedRepository {
-    suspend fun getCharacterById(characterId: Int): GetCharacterByIdResponse? {
+    suspend fun getCharacterById(characterId: Int): Character? {
         val request = NetworkLayer.apiClient.getCharacterById(characterId)
 
         if (request.failed) {
@@ -15,6 +16,6 @@ class SharedRepository {
             return null
         }
 
-        return request.body
+        return CharacterMapper.buildFrom(response = request.body)
     }
 }

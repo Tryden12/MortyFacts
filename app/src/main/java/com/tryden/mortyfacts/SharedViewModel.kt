@@ -6,13 +6,14 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.tryden.mortyfacts.network.response.GetCharacterByIdResponse
 import kotlinx.coroutines.launch
+import com.tryden.mortyfacts.domain.models.Character
 
 class SharedViewModel: ViewModel() {
 
     private val repository = SharedRepository()
 
-    private val _characterByIdLiveData = MutableLiveData<GetCharacterByIdResponse?>()
-    val characterByIdLiveData: LiveData<GetCharacterByIdResponse?> = _characterByIdLiveData
+    private val _characterByIdLiveData = MutableLiveData<Character?>()
+    val characterByIdLiveData: LiveData<Character?> = _characterByIdLiveData
 
     fun refreshCharacter(characterId: Int) {
         viewModelScope.launch {
