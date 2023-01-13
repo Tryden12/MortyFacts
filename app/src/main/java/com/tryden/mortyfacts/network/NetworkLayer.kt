@@ -17,8 +17,8 @@ object NetworkLayer {
         .build()
 
     // Service
-    val rickyAndMortyService: RickyAndMortyService by lazy {
-        retrofit.create(RickyAndMortyService::class.java)
+    val rickyAndMortyService: RickAndMortyService by lazy {
+        retrofit.create(RickAndMortyService::class.java)
     }
 
     // Client

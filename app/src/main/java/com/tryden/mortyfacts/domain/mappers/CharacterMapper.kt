@@ -2,12 +2,19 @@ package com.tryden.mortyfacts.domain.mappers
 
 import com.tryden.mortyfacts.network.response.GetCharacterByIdResponse
 import com.tryden.mortyfacts.domain.models.Character
+import com.tryden.mortyfacts.domain.models.Episode
+import com.tryden.mortyfacts.network.response.GetEpisodeByIdResponse
 
 object CharacterMapper {
 
-    fun buildFrom(response: GetCharacterByIdResponse) : Character {
+    fun buildFrom(
+        response: GetCharacterByIdResponse,
+        episodes: List<GetEpisodeByIdResponse>
+    ) : Character {
         return Character(
-            episodeList = emptyList(), // todo
+            episodeList = episodes.map {
+               EpisodeMapper.buildFrom(it)
+            },
             gender = response.gender,
             id = response.id,
             image = response.image,
