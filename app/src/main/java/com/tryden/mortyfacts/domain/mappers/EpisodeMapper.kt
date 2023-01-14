@@ -9,7 +9,7 @@ object EpisodeMapper {
         return Episode(
             id = networkEpisode.id,
             name = networkEpisode.name,
-            airDate = networkEpisode.name,
+            airDate = networkEpisode.air_date,
             episode = networkEpisode.episode
         )
     }
