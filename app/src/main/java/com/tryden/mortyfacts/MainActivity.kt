@@ -3,14 +3,9 @@ package com.tryden.mortyfacts
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
-import android.widget.ImageView
-import android.widget.TextView
 import android.widget.Toast
-import androidx.appcompat.widget.AppCompatImageView
-import androidx.appcompat.widget.AppCompatTextView
 import androidx.lifecycle.ViewModelProvider
 import com.airbnb.epoxy.EpoxyRecyclerView
-import com.squareup.picasso.Picasso
 import com.tryden.mortyfacts.characters.detail.CharacterDetailsEpoxyController
 import com.tryden.mortyfacts.util.Constants.INTENT_EXTRA_CHARACTER_ID
 
@@ -26,7 +21,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_character_detail)
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
