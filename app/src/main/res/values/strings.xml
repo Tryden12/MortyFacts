@@ -1,3 +1,20 @@
 <resources>
     <string name="app_name">MortyFacts</string>
+
+    <!-- Data Response -->
+    <string name="male">male</string>
+
+    <!-- Epoxy Ids -->
+    <string name="id_loading">loading</string>
+    <string name="id_header">header</string>
+    <string name="id_image">image</string>
+    <string name="id_data_point_origin">data_point_origin</string>
+    <string name="id_data_point_species">data_point_species</string>
+
+    <!-- Epoxy Title's-->
+    <string name="title_origin">Origin</string>
+    <string name="title_species">Species</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
 </resources>
